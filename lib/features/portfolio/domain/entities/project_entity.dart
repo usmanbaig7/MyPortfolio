@@ -12,6 +12,7 @@ class ProjectEntity {
     required this.imageUrl,
     required this.liveUrl,
     required this.githubUrl,
+    this.youtubeVideoId,
   });
 
   final String id;
@@ -28,4 +29,8 @@ class ProjectEntity {
 
   /// URL to the GitHub repository (may be empty).
   final String githubUrl;
+
+  /// YouTube video ID for the project demo (e.g. 'dQw4w9WgXcQ').
+  /// Null or empty means no video demo is available.
+  final String? youtubeVideoId;
 }

@@ -18,6 +18,8 @@ class AppStrings {
 
   // ── Project detail screen ───────────────────────────────────────────────────
   static const String techStackLabel = 'Tech Stack';
+  static const String demoVideoLabel = 'Demo Video';
+  static const String videoDemo = 'Video Demo';
   static const String githubSource = 'GitHub';
 
   // ── Assets ──────────────────────────────────────────────────────────────────

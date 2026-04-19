@@ -79,7 +79,7 @@ class ProjectsSection extends StatelessWidget {
             crossAxisSpacing: AppSizes.paddingL,
             mainAxisSpacing: AppSizes.paddingL,
             // Taller cards on single-column layout for readability
-            childAspectRatio: crossAxisCount == 1 ? 1.1 : 1.09,
+            childAspectRatio: crossAxisCount == 1 ? 1.1 : 1.4,
           ),
           itemCount: provider.projects.length,
           itemBuilder: (context, i) => AnimatedFadeIn(

@@ -20,6 +20,7 @@ class ProjectModel {
     required this.imageUrl,
     required this.liveUrl,
     required this.githubUrl,
+    this.youtubeVideoId,
   });
 
   @HiveField(0)
@@ -46,6 +47,10 @@ class ProjectModel {
   @HiveField(7)
   final String githubUrl;
 
+  /// YouTube video ID for the project demo popup (may be null/empty).
+  @HiveField(8)
+  final String? youtubeVideoId;
+
   /// Converts this Hive model to a pure domain [ProjectEntity].
   ProjectEntity toEntity() => ProjectEntity(
         id: id,
@@ -56,6 +61,7 @@ class ProjectModel {
         imageUrl: imageUrl,
         liveUrl: liveUrl,
         githubUrl: githubUrl,
+        youtubeVideoId: youtubeVideoId,
       );
 
   /// Creates a [ProjectModel] from a domain [ProjectEntity].
@@ -68,5 +74,6 @@ class ProjectModel {
         imageUrl: entity.imageUrl,
         liveUrl: entity.liveUrl,
         githubUrl: entity.githubUrl,
+        youtubeVideoId: entity.youtubeVideoId,
       );
 }

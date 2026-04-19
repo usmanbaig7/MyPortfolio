@@ -25,13 +25,14 @@ class ProjectModelAdapter extends TypeAdapter<ProjectModel> {
       imageUrl: fields[5] as String,
       liveUrl: fields[6] as String,
       githubUrl: fields[7] as String,
+      youtubeVideoId: fields[8] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ProjectModel obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -47,7 +48,9 @@ class ProjectModelAdapter extends TypeAdapter<ProjectModel> {
       ..writeByte(6)
       ..write(obj.liveUrl)
       ..writeByte(7)
-      ..write(obj.githubUrl);
+      ..write(obj.githubUrl)
+      ..writeByte(8)
+      ..write(obj.youtubeVideoId);
   }
 
   @override

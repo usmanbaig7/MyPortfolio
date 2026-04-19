@@ -36,7 +36,7 @@ class _ProjectCardState extends State<ProjectCard> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeOut,
-          transform: Matrix4.translationValues(0, _hovered ? -8.0 : 0.0, 0),
+          transform: Matrix4.translationValues(0, _hovered ? -8.0 : 0.5, 0),
           decoration: BoxDecoration(
             color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusM),
@@ -110,7 +110,7 @@ class _ProjectCardState extends State<ProjectCard> {
             const SizedBox(height: 6),
             Text(
               widget.project.shortDescription,
-              maxLines: 2,
+              maxLines: 4,
               overflow: TextOverflow.ellipsis,
               style: theme.textTheme.bodySmall?.copyWith(
                 color: AppColors.textSecondary,

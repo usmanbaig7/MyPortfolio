@@ -43,12 +43,27 @@ Future<void> _seedDummyData(Box<ProjectModel> box) async {
     (
       id: '1',
       title: 'Lincsell POS',
-      short: 'A full-featured shopping app with cart and payment.',
+      short: 'A modern POS system designed to help small businesses manage sales efficiently and seamlessly. It streamlines transactions, inventory, and payments in one intuitive platform.',
       full:
-          'A comprehensive e-commerce application built with Flutter featuring '
-              'product browsing, cart management, Stripe payment integration, and '
-              'real-time order tracking.  Supports iOS, Android, and Web from a '
-              'single codebase with over 10 000 monthly active users.',
+          'Lincsell POS is a modern point-of-sale solution built to help small '
+              'and medium-sized businesses manage their daily sales operations '
+              'efficiently. It provides a seamless checkout experience while '
+              'handling inventory, payments, and transaction tracking in a single '
+              'platform. The app is designed with performance, scalability, and '
+              'ease of use in mind, making it suitable for real-world retail '
+              'environments.\n\n'
+              'Key Development Strategies & Technologies:\n\n'
+              '• State Management: Implemented using Provider for efficient and '
+              'scalable state handling across the app.\n'
+              '• API Integration: Integrated REST APIs to manage dynamic data '
+              'such as products, sales, and user information.\n'
+              '• Third-Party Integrations: Connected external SDKs including '
+              'Stripe for secure payments and printing services for receipts.\n'
+              '• Clean Architecture: Structured the project using clean '
+              'architecture principles to ensure maintainability, scalability, '
+              'and separation of concerns.\n'
+              '• Backend Integration: Developed and integrated Azure APIs to '
+              'securely fetch and manage data from the server.',
       stack: ['Flutter', 'Dart', 'Azure', 'Stripe', 'Hive'],
       live: 'https://example.com/ecommerce',
       github: 'https://github.com/johndoe/ecommerce',
@@ -56,12 +71,25 @@ Future<void> _seedDummyData(Box<ProjectModel> box) async {
     (
       id: '2',
       title: 'Lincsell POS Lite',
-      short: 'Productivity app with drag-and-drop Kanban boards.',
+      short: 'A lightweight POS solution that enables business owners to manage and complete sales from anywhere. Designed for flexibility, it removes the need for a fixed physical store.',
       full:
-          'A productivity-focused task manager featuring Kanban boards with '
-              'drag-and-drop support, deadline reminders, team collaboration spaces, '
-              'and an analytics dashboard.  Built with Flutter and a Node.js REST '
-              'API, with real-time sync via WebSockets.',
+          'Lincsell POS Lite is a lightweight and flexible point-of-sale solution '
+              'designed for business owners who need to manage sales beyond a fixed '
+              'location. It enables seamless transactions on the go, making it ideal '
+              'for small businesses, mobile vendors, and startups. With a simplified '
+              'feature set, the app focuses on speed, usability, and accessibility '
+              'while maintaining reliable performance.\n\n'
+              'Key Development Strategies & Technologies:\n\n'
+              '• State Management: Utilized Provider for efficient and responsive '
+              'state handling across the application.\n'
+              '• API Integration: Connected REST APIs to manage core functionalities '
+              'such as sales and basic product data.\n'
+              '• Third-Party Integrations: Integrated essential SDKs including '
+              'Stripe for secure payment processing.\n'
+              '• Clean Architecture: Followed clean architecture principles to keep '
+              'the codebase modular and easy to maintain.\n'
+              '• Backend Integration: Implemented Azure APIs for secure and scalable '
+              'data communication with the server.',
       stack: ['Flutter', 'Dart', 'Azure', 'Stripe', 'Hive'],
       live: 'https://example.com/taskmanager',
       github: 'https://github.com/johndoe/taskmanager',
@@ -69,12 +97,27 @@ Future<void> _seedDummyData(Box<ProjectModel> box) async {
     (
       id: '3',
       title: 'Customers App',
-      short: 'Real-time weather forecasting with beautiful animations.',
+      short: 'A customer-focused app that helps users discover nearby stores and explore the latest offers. It also includes a loyalty system where users earn and redeem points on purchases.',
       full:
-          'A weather dashboard that provides real-time forecasts, hourly and '
-              'weekly breakdowns, air-quality index, and severe-weather alerts.  '
-              'Powered by the OpenWeatherMap API with a clean, animated UI built '
-              'entirely in Flutter using Riverpod and Hive for offline caching.',
+          'The customer app is designed to enhance the shopping experience by '
+              'helping users discover nearby stores and explore ongoing offers with '
+              'ease. It provides a seamless way to stay connected with local '
+              'businesses while benefiting from exclusive deals. With an integrated '
+              'loyalty system, users can earn reward points on purchases and redeem '
+              'them for future benefits, encouraging long-term engagement.\n\n'
+              'Key Development Strategies & Technologies:\n\n'
+              '• State Management: Implemented using Provider for smooth and '
+              'efficient UI updates.\n'
+              '• API Integration: Integrated REST APIs to fetch store data, offers, '
+              'and user-related information dynamically.\n'
+              '• Map & Location Services: Integrated map services to display nearby '
+              'stores and enable users to view locations visually on the map.\n'
+              '• Loyalty System: Developed a reward points mechanism to track and '
+              'redeem customer benefits.\n'
+              '• Clean Architecture: Structured the app with clean architecture for '
+              'scalability and maintainability.\n'
+              '• Backend Integration: Connected with Azure APIs to securely manage '
+              'user data and transactions.',
       stack: ['Flutter', 'Dart','Azure', 'Provider', 'Hive'],
       live: 'https://example.com/weather',
       github: 'https://github.com/johndoe/weather',
@@ -82,17 +125,51 @@ Future<void> _seedDummyData(Box<ProjectModel> box) async {
     (
       id: '4',
       title: 'Managers App',
-      short: 'Instagram-style social media app for content creators.',
+      short: 'A manager-focused app for capturing, scanning, and uploading receipts to the server. It provides a secure and organized way to store and access transaction records.',
       full:
-          'A social media application for creators to share photos, short videos, '
-              'and stories.  Features an algorithmic feed powered by Algolia, '
-              'real-time notifications, direct messaging, and detailed creator '
-              'analytics — all backed by Firebase.',
+          'The Managers App for Family Thrift Store is designed to make receipt '
+              'management more accurate, organized, and fully digital. It allows '
+              'managers to capture receipt images and upload them directly to the '
+              'server for secure backup. The app also ensures better document '
+              'quality by using a built-in scanning system that guides users to '
+              'properly align receipts within a defined boundary before capturing '
+              'the image. This helps avoid unclear or improperly taken photos. In '
+              'addition, managers can easily view, manage, and access all uploaded '
+              'receipts anytime, improving record keeping and operational '
+              'efficiency.\n\n'
+              'Key Development Strategies & Technologies:\n\n'
+              '• State Management: Implemented using Provider for smooth and '
+              'responsive UI updates across camera, scanning, upload, and receipt '
+              'viewing modules.\n'
+              '• API Integration: Integrated REST APIs to upload receipt images, '
+              'fetch stored documents, and manage categorized receipt data.\n'
+              '• Camera Integration: Enabled direct receipt capture using the '
+              'device camera for quick and easy digital submission.\n'
+              '• Guided Scanning System: Implemented a boundary-based scanner that '
+              'only allows image capture when the receipt is properly aligned within '
+              'the frame, ensuring high-quality uploads.\n'
+              '• Cloud Storage: All receipts are securely uploaded and stored on '
+              'the server for backup and long-term access.\n'
+              '• Receipt Management Module: Provides functionality to view, search, '
+              'and organize all uploaded receipts in a structured system.\n'
+              '• Clean Architecture: Built with scalable clean architecture to '
+              'ensure maintainability and future feature expansion.\n'
+              '• Backend Integration: Connected with secure Azure-based APIs for '
+              'reliable data handling and centralized storage.',
       stack: ['Flutter', 'Dart', 'Azure', 'Hive'],
       live: 'https://example.com/socialfeed',
       github: 'https://github.com/johndoe/socialfeed',
     ),
   ];
+
+  // YouTube video IDs for projects that have demo videos.
+  // Only pass the ID from the URL (the part after ?v=).
+  // e.g. https://www.youtube.com/watch?v=usYvBFd0Kqc  →  'usYvBFd0Kqc'
+  const youtubeVideoIds = <String, String>{
+    '1': 'bwLbVmHPdM4', // Lincsell POS
+    '2': 'usYvBFd0Kqc', // Lincsell POS Lite
+    '4': '9Oc1LDQPMu8', // Managers App
+  };
 
   for (final p in projects) {
     await box.put(
@@ -106,6 +183,7 @@ Future<void> _seedDummyData(Box<ProjectModel> box) async {
         imageUrl: 'https://picsum.photos/seed/${p.id}/600/400',
         liveUrl: p.live,
         githubUrl: p.github,
+        youtubeVideoId: youtubeVideoIds[p.id],
       ),
     );
   }

@@ -27,9 +27,11 @@ class HeroSection extends StatefulWidget {
 }
 
 class _HeroSectionState extends State<HeroSection>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late final AnimationController _glowController;
   late final Animation<double> _glowAnim;
+
+  late final AnimationController _flutterLogoController;
 
   @override
   void initState() {
@@ -42,11 +44,17 @@ class _HeroSectionState extends State<HeroSection>
     _glowAnim = Tween<double>(begin: 0.35, end: 1.0).animate(
       CurvedAnimation(parent: _glowController, curve: Curves.easeInOut),
     );
+
+    _flutterLogoController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    )..repeat();
   }
 
   @override
   void dispose() {
     _glowController.dispose();
+    _flutterLogoController.dispose();
     super.dispose();
   }
 
@@ -142,13 +150,34 @@ class _HeroSectionState extends State<HeroSection>
               ),
               OutlinedButton.icon(
                 onPressed: _launchContact,
-                icon: const Icon(Icons.mail_outline_rounded, size: 18),
+                icon: _animatedFlutterLogo(),
                 label: const Text(AppStrings.ctaContact),
               ),
             ],
           ),
         ],
       ),
+    );
+  }
+
+  // ── Animated Flutter logo ─────────────────────────────────────────────────
+
+  Widget _animatedFlutterLogo({double size = 20}) {
+    return AnimatedBuilder(
+      animation: _flutterLogoController,
+      builder: (_, __) {
+        final t = _flutterLogoController.value;
+        final angle = t * 2 * math.pi;
+        // scale pulses between 0.8 and 1.2 in sync with the rotation
+        final scale = 0.8 + 0.4 * math.sin(t * 2 * math.pi).abs();
+        return Transform.scale(
+          scale: scale,
+          child: Transform.rotate(
+            angle: angle,
+            child: FlutterLogo(size: size),
+          ),
+        );
+      },
     );
   }
 

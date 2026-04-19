@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
+import 'dart:ui_web' as ui_web;
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -78,11 +80,12 @@ class ProjectDetailScreen extends StatelessWidget {
         _TechStackSection(techStack: project.techStack),
         const SizedBox(height: AppSizes.paddingXXL),
 
-        // Action buttons
-        _ActionButtons(
-          liveUrl: project.liveUrl,
-          githubUrl: project.githubUrl,
-        ),
+        // Demo video
+        if (project.youtubeVideoId != null &&
+            project.youtubeVideoId!.isNotEmpty)
+          _DemoVideoSection(
+            videoId: project.youtubeVideoId!,
+          ),
         const SizedBox(height: AppSizes.paddingXXL),
       ],
     );
@@ -143,36 +146,81 @@ class _TechStackSection extends StatelessWidget {
       );
 }
 
-/// Elevated + outlined CTA buttons for live demo and GitHub.
-class _ActionButtons extends StatelessWidget {
-  const _ActionButtons({
-    required this.liveUrl,
-    required this.githubUrl,
-  });
+// ── YouTube demo video section ───────────────────────────────────────────
 
-  final String liveUrl;
-  final String githubUrl;
+/// Tracks which view types have already been registered with the platform
+/// view registry (registration must happen exactly once per type).
+final _registeredYtViewTypes = <String>{};
 
-  Future<void> _open(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+/// Inline 16:9 YouTube video embedded directly on the detail page.
+class _DemoVideoSection extends StatefulWidget {
+  const _DemoVideoSection({required this.videoId});
+
+  final String videoId;
+
+  @override
+  State<_DemoVideoSection> createState() => _DemoVideoSectionState();
+}
+
+class _DemoVideoSectionState extends State<_DemoVideoSection> {
+  late final String _viewType;
+
+  @override
+  void initState() {
+    super.initState();
+    _viewType = 'yt-inline-${widget.videoId}';
+
+    if (!_registeredYtViewTypes.contains(_viewType)) {
+      _registeredYtViewTypes.add(_viewType);
+      ui_web.platformViewRegistry.registerViewFactory(
+        _viewType,
+        (int viewId) {
+          final origin = Uri.encodeComponent(
+            html.window.location.origin,
+          );
+          final embedUrl =
+              'https://www.youtube.com/embed/${widget.videoId}'
+              '?rel=0&modestbranding=1&enablejsapi=1&origin=$origin';
+          return html.IFrameElement()
+            ..src = embedUrl
+            ..allowFullscreen = true
+            ..setAttribute(
+              'allow',
+              'accelerometer; autoplay; clipboard-write; '
+                  'encrypted-media; gyroscope; picture-in-picture',
+            )
+            ..style.border = 'none'
+            ..style.width = '100%'
+            ..style.height = '100%';
+        },
+      );
     }
   }
 
   @override
-  Widget build(BuildContext context) => Wrap(
-        spacing: 16,
-        runSpacing: 12,
-        children: [
-          if (liveUrl.isNotEmpty)
-      
-          if (githubUrl.isNotEmpty)
-            OutlinedButton.icon(
-              onPressed: () => _open(githubUrl),
-              icon: const Icon(Icons.code_rounded, size: 18),
-              label: const Text(AppStrings.githubSource),
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppStrings.demoVideoLabel,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+                color: AppColors.textPrimary,
+              ),
+        ),
+        const SizedBox(height: 16),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 900),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: HtmlElementView(viewType: _viewType),
             ),
-        ],
-      );
+          ),
+        ),
+      ],
+    );
+  }
 }
